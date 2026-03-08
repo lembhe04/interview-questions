@@ -1,0 +1,128 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: 'Playfair Display';
+  --font-body: 'DM Sans';
+  --font-mono: 'DM Mono';
+
+  --bg: #faf8f4;
+  --bg-card: #ffffff;
+  --border: #e4dfd4;
+  --ink: #0f0e0d;
+  --ink-muted: #6b6456;
+  --accent: #c8521a;
+  --accent-light: #fdf0e8;
+  --easy: #2d7a4f;
+  --easy-bg: #edf7f1;
+  --medium: #b07d1a;
+  --medium-bg: #fef9ec;
+  --hard: #c8392b;
+  --hard-bg: #fdf0ee;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--ink);
+  font-family: var(--font-body), sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Grain texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+}
+
+@layer components {
+  .card {
+    @apply bg-white border border-[var(--border)] rounded-2xl;
+  }
+
+  .btn-primary {
+    @apply bg-[var(--accent)] text-white font-medium px-5 py-2.5 rounded-xl
+           hover:bg-orange-700 transition-all duration-200 active:scale-95
+           text-sm tracking-wide;
+  }
+
+  .btn-secondary {
+    @apply bg-white text-[var(--ink)] font-medium px-5 py-2.5 rounded-xl
+           border border-[var(--border)] hover:border-[var(--accent)]
+           hover:text-[var(--accent)] transition-all duration-200 active:scale-95
+           text-sm;
+  }
+
+  .btn-ghost {
+    @apply text-[var(--ink-muted)] hover:text-[var(--ink)] transition-colors
+           font-medium text-sm px-3 py-2 rounded-lg hover:bg-[var(--border)];
+  }
+
+  .input {
+    @apply w-full bg-white border border-[var(--border)] rounded-xl px-4 py-2.5
+           text-sm text-[var(--ink)] placeholder:text-[var(--ink-muted)]
+           focus:outline-none focus:ring-2 focus:ring-[var(--accent)] focus:ring-opacity-30
+           focus:border-[var(--accent)] transition-all duration-200;
+  }
+
+  .label {
+    @apply block text-xs font-semibold text-[var(--ink-muted)] uppercase tracking-widest mb-1.5;
+  }
+
+  .badge-easy {
+    @apply text-xs font-semibold px-2.5 py-1 rounded-full
+           bg-[var(--easy-bg)] text-[var(--easy)];
+  }
+
+  .badge-medium {
+    @apply text-xs font-semibold px-2.5 py-1 rounded-full
+           bg-[var(--medium-bg)] text-[var(--medium)];
+  }
+
+  .badge-hard {
+    @apply text-xs font-semibold px-2.5 py-1 rounded-full
+           bg-[var(--hard-bg)] text-[var(--hard)];
+  }
+
+  .section-title {
+    font-family: var(--font-display), serif;
+    @apply text-3xl font-semibold text-[var(--ink)];
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: #c5bdb0; }
+
+/* Stagger animations */
+.stagger > * { animation: fadeUp 0.4s ease both; }
+.stagger > *:nth-child(1) { animation-delay: 0ms; }
+.stagger > *:nth-child(2) { animation-delay: 60ms; }
+.stagger > *:nth-child(3) { animation-delay: 120ms; }
+.stagger > *:nth-child(4) { animation-delay: 180ms; }
+.stagger > *:nth-child(5) { animation-delay: 240ms; }
+.stagger > *:nth-child(6) { animation-delay: 300ms; }
+.stagger > *:nth-child(7) { animation-delay: 360ms; }
+.stagger > *:nth-child(8) { animation-delay: 420ms; }
+.stagger > *:nth-child(9) { animation-delay: 480ms; }
+.stagger > *:nth-child(10) { animation-delay: 540ms; }
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}

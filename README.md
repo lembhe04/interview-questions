@@ -1,3 +1,4 @@
+
 # 📚 Interview Question Bank
 
 A full-stack web application for browsing, submitting, searching, and upvoting interview questions from top tech companies. Built with Next.js 14, Supabase, and Tailwind CSS.
@@ -88,7 +89,6 @@ npm install
 1. Go to [https://supabase.com](https://supabase.com) and sign in
 2. Click **"New Project"**
 3. Choose your organization, name your project, set a database password
-4. Wait ~2 minutes for the project to be provisioned
 
 ---
 
@@ -154,33 +154,6 @@ Open [http://localhost:3000](http://localhost:3000) — you should see the home 
 
 ---
 
-### Step 8 — Deploy to Vercel
-
-#### Option A: Vercel CLI
-
-```bash
-npm install -g vercel
-vercel
-```
-
-Follow the prompts, then add environment variables:
-
-```bash
-vercel env add NEXT_PUBLIC_SUPABASE_URL
-vercel env add NEXT_PUBLIC_SUPABASE_ANON_KEY
-```
-
-#### Option B: Vercel Dashboard
-
-1. Push your code to GitHub
-2. Go to [vercel.com](https://vercel.com) → **"New Project"**
-3. Import your GitHub repository
-4. Add environment variables in the **"Environment Variables"** section:
-   - `NEXT_PUBLIC_SUPABASE_URL`
-   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-5. Click **"Deploy"**
-
----
 
 ## 🔐 Authentication Flow
 
@@ -217,12 +190,7 @@ votes
   UNIQUE(user_id, question_id)
 ```
 
-## 🎨 Design System
 
-The app uses a warm editorial aesthetic:
-- **Fonts**: Playfair Display (headings) + DM Sans (body) + DM Mono (code)
-- **Palette**: Warm off-white background, orange accent `#c8521a`
-- **Difficulty colors**: Green (Easy), Amber (Medium), Red (Hard)
 
 ## 📝 Notes
 
@@ -231,10 +199,4 @@ The app uses a warm editorial aesthetic:
 - All tables use Row Level Security (RLS) — public data is readable by everyone, writes require authentication
 - The `vote_count` is computed client-side by counting related vote rows (no denormalized counter needed at this scale)
 
-## 🤝 Contributing
 
-Pull requests welcome! Please open an issue first for major changes.
-
-## 📄 License
-
-MIT

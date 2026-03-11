@@ -14,7 +14,7 @@ export default function RootLayout({ children }) {
         <main className="min-h-screen">
           {children}
         </main>
-        <footer className="border-t border-[var(--border)]  py-10 text-center text-sm text-[var(--ink-muted)]">
+        <footer className="border-t border-[var(--border)] mt-20 py-10 text-center text-sm text-[var(--ink-muted)]">
           <div className="max-w-6xl mx-auto px-4">
             <span style={{ fontFamily: 'var(--font-display)' }} className="font-semibold text-[var(--ink)]">
               Interview Bank

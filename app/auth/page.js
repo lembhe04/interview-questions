@@ -58,7 +58,7 @@ export default function AuthPage() {
   }
 
   return (
-    <div className="min-h-screen border flex items-center justify-center px-4 py-16">
+    <div className="min-h-screen  flex items-center justify-center px-4 py-16">
       <div className="w-full max-w-md">
         {/* Header */}
         <div className="text-center mb-8">

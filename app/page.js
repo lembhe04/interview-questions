@@ -6,13 +6,14 @@ import Link from 'next/link'
 export const dynamic = 'force-dynamic'
 
 export default async function HomePage({ searchParams }) {
+  const params = await searchParams
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
 
-  const search = searchParams?.search || ''
-  const company = searchParams?.company || ''
-  const topic = searchParams?.topic || ''
-  const difficulty = searchParams?.difficulty || ''
+  const search = params?.search || ''
+  const company = params?.company || ''
+  const topic = params?.topic || ''
+  const difficulty = params?.difficulty || ''
 
   let query = supabase
     .from('questions')
@@ -44,7 +45,7 @@ export default async function HomePage({ searchParams }) {
   const uniqueTopics = [...new Set((topics || []).map(t => t.topic))]
 
   return (
-    <div className="w-full max-w-screen-2xl mx-auto px-10 py-12">
+    <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 py-12">
       <div className="mb-12 max-w-2xl">
         <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-[var(--accent-light)] text-[var(--accent)] rounded-full text-xs font-semibold mb-4">
           <span className="w-1.5 h-1.5 bg-[var(--accent)] rounded-full animate-pulse" />
